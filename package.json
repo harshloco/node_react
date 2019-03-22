@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/harshloco/node_react/issues"
   },
-  "homepage": "https://github.com/harshloco/node_react#readme"
+  "homepage": "https://github.com/harshloco/node_react#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongose": "0.0.2-security",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.11.0"
+  }
 }
