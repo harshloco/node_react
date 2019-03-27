@@ -6,8 +6,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
+  /* The image used */
+  /* background-image: url("./images/showcase.jpg"); */
+
+  /* Full height */
+  /* height: 100%; */
+
+  /* Center and scale the image nicely */
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+body:before {
+  content: "";
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./images/showcase.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: cover;
+  filter: blur(8px);
+  z-index: -9;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
