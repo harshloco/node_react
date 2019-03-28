@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
+
+import WeatherForm from "./WeatherForm";
 
 class Landing extends Component {
   // componentDidMount() {
@@ -14,33 +15,27 @@ class Landing extends Component {
       questions: true,
       answers: false,
       loading: false,
-      serverResponse: null
+      serverResponse: null,
+      showWeatherForm: false
     };
     this.onClick = this.onClick.bind(this);
   }
   onClick(e) {
     e.preventDefault(); // prevents the submit form
     console.log("button clicked " + e.target.name);
-    const weatherCheck = {
-      city: "sydney",
-      country: "Australia"
-    };
-    console.log("weatherCheck " + weatherCheck.city);
+    // const weatherCheck = {
+    //   city: "sydney",
+    //   country: "Australia"
+    // };
+    // console.log("weatherCheck " + weatherCheck.city);
     this.setState({ loading: true });
-    axios
-      .get("/api/category/" + e.target.name + "/" + weatherCheck.city)
-      .then(result => {
-        if (result) {
-          console.log(result.data);
-
-          this.setState({
-            questions: false,
-            answers: true,
-            loading: false,
-            serverResponse: result.data
-          });
-        }
-      });
+    this.setState({
+      questions: false,
+      answers: true,
+      loading: false,
+      serverResponse: "result.data",
+      showWeatherForm: true
+    });
   }
   render() {
     let dashboardContent;
@@ -75,9 +70,9 @@ class Landing extends Component {
                   </div> */}
 
                   <div className="col-sm-12">
-                    <div className="card border-0">
+                    <div className="card  w-75 ">
                       <div className="card-body">
-                        <h5 className="card-title">
+                        <h5 className="card-title text-dark">
                           Click one of the buttons below!
                         </h5>
                         {/* <p className="card-text">
@@ -99,37 +94,9 @@ class Landing extends Component {
                               onClick={this.onClick}
                               type="button"
                               name="weather"
-                              className="btn btn-outline-light buttonBorder"
+                              className="btn btn-outline-info buttonBorder text-dark"
                             >
                               Weather
-                            </button>
-                          </div>
-                          <div
-                            className="btn-group mr-2"
-                            role="group"
-                            aria-label="First group"
-                          >
-                            <button
-                              onClick={this.onClick}
-                              type="button"
-                              name="dogs"
-                              className="btn btn-outline-light buttonBorder"
-                            >
-                              Dogs
-                            </button>
-                          </div>
-                          <div
-                            className="btn-group mr-2"
-                            role="group"
-                            aria-label="First group"
-                          >
-                            <button
-                              onClick={this.onClick}
-                              type="button"
-                              name="cats"
-                              className="btn btn-outline-light buttonBorder "
-                            >
-                              Cats
                             </button>
                           </div>
                         </div>
@@ -138,89 +105,17 @@ class Landing extends Component {
                   </div>
 
                   <div className="clearfix" />
-                  {/* <div className="col-sm-12">
-                    <div className="card">
-                      <div className="card-body">
-                        <h5 className="card-title">Special title treatment</h5>
-                        <p className="card-text">
-                          With supporting text below as a natural lead-in to
-                          additional content.
-                        </p>
-                        <a href="#" className="btn btn-primary">
-                          Go somewhere
-                        </a>
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
           </div>
         );
       } else {
-        return (
-          <div className="landing landingStyle">
-            <div className="landing-inner text-white">
-              <div className="container">
-                <div className="row">
-                  <div className="container">
-                    <div className="row">
-                      <div
-                        className="col-sm-2 nopadding"
-                        // style={{ backgroundColor: "yellow" }}
-                        // style="background-color:yellow;"
-                      >
-                        <img
-                          // className="align-left m-5 pb-5"
-                          src={
-                            this.state.serverResponse.resData.current.condition
-                              .icon
-                          }
-                          alt="Card image"
-                        />
-                        <text className="textPadding">
-                          {
-                            this.state.serverResponse.resData.current.condition
-                              .text
-                          }
-                        </text>
-                      </div>
+        if (this.state.showWeatherForm) {
+          //show weather for where user can enter city details
 
-                      <div
-                        className="col-sm-6 nopadding"
-                        // style={{ backgroundColor: "pink" }}
-                      >
-                        <div className="col-sm-4 col-md-4 nopadding">
-                          <text>
-                            Wind:{" "}
-                            {this.state.serverResponse.resData.current.wind_kph}
-                            kmph
-                          </text>
-                        </div>
-                        <div className="col-sm-4 col-md-4 nopadding">
-                          <text>
-                            Humidity:{" "}
-                            {this.state.serverResponse.resData.current.humidity}
-                          </text>
-                        </div>
-                        <div className="col-sm-4 col-md-4 nopadding">
-                          <text>
-                            Feels like:{" "}
-                            {
-                              this.state.serverResponse.resData.current
-                                .feelslike_c
-                            }
-                          </text>
-                          <span> &#8451;</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
+          return <WeatherForm />;
+        }
       }
     }
   }

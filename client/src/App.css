@@ -15,9 +15,12 @@
 .landingStyle {
   padding-top: 10%;
 }
-
+.weatherCardResult {
+  padding-top: 3%;
+}
 .card {
-  background-color: rgba(255, 255, 255, 0) !important;
+  /* background-color: rgba(255, 255, 255, 0) !important; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .buttonBorder {
@@ -27,11 +30,17 @@
 .whiteBackground {
   background-color: white;
 }
+.transparentBackground {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
 .textPadding {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-
+textarea:focus,
+input:focus {
+  outline: none;
+}
 .nopadding {
   /* padding: 0 !important; */
   /* margin: 0 !important; */

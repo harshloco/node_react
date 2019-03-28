@@ -20,7 +20,7 @@ class Results extends Component {
             <div className="row" />
 
             <div className="col-sm-12">
-              <div className="card border-0">
+              <div className="card border-0 ">
                 <div className="card-body">
                   <h5 className="card-title">
                     Click one of the buttons below!
