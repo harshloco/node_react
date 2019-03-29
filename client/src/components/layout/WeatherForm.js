@@ -12,6 +12,11 @@ export default class WeatherForm extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+  onClick(e) {
+    e.preventDefault(); // prevents the submit form
+    window.location.reload();
   }
   onChange(e) {
     //set the values entered in the form to the state
@@ -53,17 +58,23 @@ export default class WeatherForm extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                <div className="col-6 ">
+                <div className="col-3 ">
                   <button
                     type="submit"
-                    className="btn btn-default mx-5 col-9"
-                    style={{ color: "CA141D" }}
+                    className="btn btn-default mx-5  responsive-width"
                   >
                     Get Weather
                   </button>
                 </div>
-
-                <div className="col-3" />
+                <div className="col-3 ">
+                  <button
+                    type="submit"
+                    className="btn btn-default mx-5 responsive-width"
+                    onClick={this.onClick}
+                  >
+                    Back to Home
+                  </button>
+                </div>
               </form>
             </div>
           </div>

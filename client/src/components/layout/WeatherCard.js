@@ -24,15 +24,26 @@ class WeatherCard extends Component {
     console.log("showing weathercard");
     if (this.props.showWeatherResult.resData.error != null) {
       return (
-        <div className="alert alert-success alert-dismissible">
-          <strong>Warning!</strong> This alert box could indicate a warning that
-          might need attention.
+        <div className="weatherCardResult">
+          <div className="weatherCardResult-inner ">
+            <div className="container">
+              <div className="row">
+                <div className=" mx-5 text-dark">
+                  <div className="alert alert-success alert-dismissible">
+                    <strong>
+                      {this.props.showWeatherResult.resData.error.message}
+                    </strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
         //   <SweetAlert title="Here's a message!" onConfirm={this.onConfirm}>
         //     {this.props.showWeatherResult.resData.error.message}
         //   </SweetAlert>
       );
-      return <div />;
     } else {
       return (
         <div className="weatherCardResult">
