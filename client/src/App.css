@@ -41,6 +41,10 @@ textarea:focus,
 input:focus {
   outline: none;
 }
+.dropdownHeight {
+  max-height: 200px;
+  overflow: auto;
+}
 .nopadding {
   /* padding: 0 !important; */
   /* margin: 0 !important; */

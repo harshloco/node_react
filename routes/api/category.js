@@ -19,6 +19,32 @@ router.get("/test", (req, res) =>
   )
 );
 
+//Post top stories
+router.get("/news/:section", (req, res) => {
+  //console.log("city search " + req.params.city);
+  // res.json({ succes: true });
+  const api_key = "pkYaRs3WogFgZTmjZCLtXaNRRpq437yg";
+  console.log(
+    "https://api.nytimes.com/svc/topstories/v2/" +
+      req.params.section +
+      ".json?api-key=" +
+      api_key
+  );
+  Request.get(
+    "https://api.nytimes.com/svc/topstories/v2/" +
+      req.params.section +
+      ".json?api-key=" +
+      api_key,
+    (error, response, body) => {
+      if (error) {
+        return console.dir(error);
+      }
+      console.dir(JSON.parse(body));
+      res.json({ resData: JSON.parse(body) });
+    }
+  );
+});
+
 // Post weather
 router.get("/weather/:city", (req, res) => {
   console.log("city search " + req.params.city);

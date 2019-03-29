@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import NewsForm from "./NewsForm";
 import WeatherForm from "./WeatherForm";
 
 class Landing extends Component {
@@ -16,26 +16,42 @@ class Landing extends Component {
       answers: false,
       loading: false,
       serverResponse: null,
-      showWeatherForm: false
+      showWeatherForm: false,
+      showNewsForm: false
     };
     this.onClick = this.onClick.bind(this);
   }
   onClick(e) {
     e.preventDefault(); // prevents the submit form
+    let buttonName = e.target.name;
     console.log("button clicked " + e.target.name);
     // const weatherCheck = {
     //   city: "sydney",
     //   country: "Australia"
     // };
     // console.log("weatherCheck " + weatherCheck.city);
-    this.setState({ loading: true });
-    this.setState({
-      questions: false,
-      answers: true,
-      loading: false,
-      serverResponse: "result.data",
-      showWeatherForm: true
-    });
+    if (e.target.name === "weather") {
+      this.setState({ loading: true });
+      this.setState({
+        questions: false,
+        answers: true,
+        loading: false,
+        serverResponse: "result.data",
+        showWeatherForm: true,
+        showNewsForm: false
+      });
+    } else if (e.target.name === "news") {
+      console.log("news button clicked");
+      this.setState({ loading: true });
+      this.setState({
+        questions: false,
+        answers: true,
+        loading: false,
+        serverResponse: null,
+        showWeatherForm: false,
+        showNewsForm: true
+      });
+    }
   }
   render() {
     let dashboardContent;
@@ -99,6 +115,20 @@ class Landing extends Component {
                               Weather
                             </button>
                           </div>
+                          <div
+                            className="btn-group mr-2"
+                            role="group"
+                            aria-label="First group"
+                          >
+                            <button
+                              onClick={this.onClick}
+                              type="button"
+                              name="news"
+                              className="btn btn-outline-info buttonBorder text-dark"
+                            >
+                              News
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -113,8 +143,10 @@ class Landing extends Component {
       } else {
         if (this.state.showWeatherForm) {
           //show weather for where user can enter city details
-
           return <WeatherForm />;
+        } else if (this.state.showNewsForm) {
+          //show news form for where user can select topic
+          return <NewsForm />;
         }
       }
     }
