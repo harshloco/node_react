@@ -22,94 +22,113 @@ class WeatherCard extends Component {
   }
   render() {
     console.log("showing weathercard");
-    if (this.props.showWeatherResult.resData.error != null) {
+    if (this.props.showWeatherResult.resData === null) {
       return (
         <div className="weatherCardResult">
           <div className="weatherCardResult-inner ">
             <div className="container">
-              <div className="row">
-                <div className=" mx-5 text-dark">
-                  <div className="alert alert-success alert-dismissible">
-                    <strong>
-                      {this.props.showWeatherResult.resData.error.message}
-                    </strong>
-                  </div>
-                </div>
-              </div>
+              <div className="row" />
+              Loadding..
             </div>
           </div>
         </div>
-
-        //   <SweetAlert title="Here's a message!" onConfirm={this.onConfirm}>
-        //     {this.props.showWeatherResult.resData.error.message}
-        //   </SweetAlert>
       );
     } else {
-      return (
-        <div className="weatherCardResult">
-          <div className="weatherCardResult-inner ">
-            <div className="container">
-              <div className="row">
-                <div className=" mx-5 text-dark">
-                  <div
-                    className="col-sm-12 nopadding"
-                    // style={{ backgroundColor: "yellow" }}
-                    // style="background-color:yellow;"
-                  >
-                    <div className="col-sm-3">
-                      <img
-                        // className="align-left m-5 pb-5"
-                        src={
-                          this.props.showWeatherResult.resData.current.condition
-                            .icon
-                        }
-                        alt="Card image"
-                      />
-                    </div>
-                    <div className="col-sm-3">
-                      {
-                        this.props.showWeatherResult.resData.current.condition
-                          .text
-                      }
-                    </div>
-
-                    <p className="textPadding" />
-                  </div>
-
-                  <div
-                    className="col-sm-12 nopadding"
-                    // style={{ backgroundColor: "pink" }}
-                  >
-                    <div className="col-sm-12 col-md-12 nopadding">
-                      <p>
-                        Wind:{" "}
-                        {this.props.showWeatherResult.resData.current.wind_kph}
-                        kmph
-                      </p>
-                    </div>
-                    <div className="col-sm-12 col-md-12 nopadding">
-                      <p>
-                        Humidity:{" "}
-                        {this.props.showWeatherResult.resData.current.humidity}
-                      </p>
-                    </div>
-                    <div className="col-sm-12 col-md-12 nopadding">
-                      <p>
-                        Feels like:{" "}
-                        {
-                          this.props.showWeatherResult.resData.current
-                            .feelslike_c
-                        }
-                        <span> &#8451;</span>
-                      </p>
+      if (this.props.showWeatherResult.resData.error != null) {
+        return (
+          <div className="weatherCardResult">
+            <div className="weatherCardResult-inner ">
+              <div className="container">
+                <div className="row">
+                  <div className=" mx-5 text-dark">
+                    <div className="alert alert-success alert-dismissible">
+                      <strong>
+                        {this.props.showWeatherResult.resData.error.message}
+                      </strong>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      );
+
+          //   <SweetAlert title="Here's a message!" onConfirm={this.onConfirm}>
+          //     {this.props.showWeatherResult.resData.error.message}
+          //   </SweetAlert>
+        );
+      } else {
+        return (
+          <div className="weatherCardResult">
+            <div className="weatherCardResult-inner ">
+              <div className="container">
+                <div className="row">
+                  <div className=" mx-5 text-dark">
+                    <div
+                      className="col-sm-12 nopadding"
+                      // style={{ backgroundColor: "yellow" }}
+                      // style="background-color:yellow;"
+                    >
+                      <div className="col-sm-3">
+                        <img
+                          // className="align-left m-5 pb-5"
+                          src={
+                            this.props.showWeatherResult.resData.current
+                              .condition.icon
+                          }
+                          alt="Card image"
+                        />
+                      </div>
+                      <div className="col-sm-3">
+                        {
+                          this.props.showWeatherResult.resData.current.condition
+                            .text
+                        }
+                      </div>
+
+                      <p className="textPadding" />
+                    </div>
+
+                    <div
+                      className="col-sm-12 nopadding"
+                      // style={{ backgroundColor: "pink" }}
+                    >
+                      <div className="col-sm-12 col-md-12 nopadding">
+                        <p>
+                          Wind:{" "}
+                          {
+                            this.props.showWeatherResult.resData.current
+                              .wind_kph
+                          }
+                          kmph
+                        </p>
+                      </div>
+                      <div className="col-sm-12 col-md-12 nopadding">
+                        <p>
+                          Humidity:{" "}
+                          {
+                            this.props.showWeatherResult.resData.current
+                              .humidity
+                          }
+                        </p>
+                      </div>
+                      <div className="col-sm-12 col-md-12 nopadding">
+                        <p>
+                          Feels like:{" "}
+                          {
+                            this.props.showWeatherResult.resData.current
+                              .feelslike_c
+                          }
+                          <span> &#8451;</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
     }
   }
 }

@@ -133,9 +133,24 @@ class Landing extends Component {
                       </div>
                     </div>
                   </div>
-
-                  <div className="clearfix" />
                 </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp;
               </div>
             </div>
           </div>
