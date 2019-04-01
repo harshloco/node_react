@@ -114,8 +114,8 @@ class NewsForm extends Component {
             <div className="container">
               <div className="row d-flex justify-content-center">
                 <form className="form-inline" onSubmit={this.onSubmit}>
-                  <div className="col-6 ">
-                    {/* <input
+                  {/* <div className="col-6 "> */}
+                  {/* <input
                       type="text"
                       className="form-control mx-5 border-0  border-bottom border-dark transparentBackground"
                       id="city"
@@ -124,36 +124,36 @@ class NewsForm extends Component {
                       value={this.state.city}
                       onChange={this.onChange}
                     /> */}
-                    <div className="mx-5 dropdown">
-                      <button
-                        className="btn btn-secondary dropdown-toggle"
-                        type="button"
-                        id="dropdownMenu2"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        {this.state.selectedTopic}
-                      </button>
-                      <div
-                        className="dropdown-menu dropdownHeight"
-                        aria-labelledby="dropdownMenu2"
-                      >
-                        {htmlButtons}
-                      </div>
+                  <div className="mx-5 dropdown">
+                    <button
+                      className="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      id="dropdownMenu2"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      {this.state.selectedTopic}
+                    </button>
+                    <div
+                      className="dropdown-menu dropdownHeight"
+                      aria-labelledby="dropdownMenu2"
+                    >
+                      {htmlButtons}
                     </div>
                   </div>
+                  {/* </div> */}
 
-                  <div className="col-6 ">
-                    <button
-                      type="submit"
-                      className="btn btn-default mx-5 responsive-width"
-                      name="home"
-                      onClick={this.onClick}
-                    >
-                      Back to Home
-                    </button>
-                  </div>
+                  {/* <div className="col-6 "> */}
+                  <button
+                    type="submit"
+                    className="btn btn-outline-info buttonBorder text-dark mx-5 responsive-width whiteBackground"
+                    name="home"
+                    onClick={this.onClick}
+                  >
+                    Back to Home
+                  </button>
+                  {/* </div> */}
                 </form>
               </div>
             </div>

@@ -39,7 +39,7 @@ class WeatherCard extends Component {
           <div className="weatherCardResult">
             <div className="weatherCardResult-inner ">
               <div className="container">
-                <div className="row">
+                <div className="row d-flex justify-content-center">
                   <div className=" mx-5 text-dark">
                     <div className="alert alert-success alert-dismissible">
                       <strong>
@@ -57,69 +57,202 @@ class WeatherCard extends Component {
           //   </SweetAlert>
         );
       } else {
+        var days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
         return (
           <div className="weatherCardResult">
             <div className="weatherCardResult-inner ">
               <div className="container">
-                <div className="row">
-                  <div className=" mx-5 text-dark">
-                    <div
-                      className="col-sm-12 nopadding"
-                      // style={{ backgroundColor: "yellow" }}
-                      // style="background-color:yellow;"
-                    >
-                      <div className="col-sm-3">
-                        <img
-                          // className="align-left m-5 pb-5"
-                          src={
-                            this.props.showWeatherResult.resData.current
-                              .condition.icon
-                          }
-                          alt="Card image"
-                        />
-                      </div>
-                      <div className="col-sm-3">
-                        {
+                <div className="row d-flex justify-content-center">
+                  <div className="weatherCard">
+                    <span className="city">
+                      {this.props.showWeatherResult.resData.location.name},{" "}
+                      {this.props.showWeatherResult.resData.location.country}{" "}
+                    </span>
+                    {/* <ul className="menu">
+                      <li />
+                      <li />
+                      <li />
+                    </ul> */}
+                    <br />
+                    <div className="sun">
+                      <img
+                        // className="align-left m-5 pb-5"
+                        src={
                           this.props.showWeatherResult.resData.current.condition
-                            .text
+                            .icon
                         }
-                      </div>
-
-                      <p className="textPadding" />
+                        alt="Card image"
+                      />
                     </div>
-
-                    <div
-                      className="col-sm-12 nopadding"
-                      // style={{ backgroundColor: "pink" }}
-                    >
-                      <div className="col-sm-12 col-md-12 nopadding">
-                        <p>
-                          Wind:{" "}
+                    <span className="temp">
+                      {Math.round(
+                        this.props.showWeatherResult.resData.current.temp_c
+                      )}
+                      &#176;
+                    </span>
+                    <span>
+                      <ul className="variations">
+                        <li>
                           {
                             this.props.showWeatherResult.resData.current
-                              .wind_kph
+                              .condition.text
                           }
-                          kmph
-                        </p>
+                        </li>
+                        <li>
+                          <span className="speed">
+                            {Math.round(
+                              this.props.showWeatherResult.resData.current
+                                .wind_kph
+                            )}
+                            <span className="mph">kph</span>
+                          </span>
+                        </li>
+                      </ul>
+                    </span>
+                    <div className="forecast clear">
+                      <div className="day tue">
+                        {
+                          days[
+                            new Date(
+                              this.props.showWeatherResult.resData.forecast.forecastday[1].date
+                            ).getDay()
+                          ]
+                        }
+                        <br />
+                        <span>
+                          <img
+                            // className="align-left m-5 pb-5"
+                            src={
+                              this.props.showWeatherResult.resData.forecast
+                                .forecastday[1].day.condition.icon
+                            }
+                            alt="Card image"
+                          />
+                        </span>
+                        <br />{" "}
+                        <span className="highTemp">
+                          {Math.round(
+                            this.props.showWeatherResult.resData.forecast
+                              .forecastday[1].day.maxtemp_c
+                          )}
+                          &#176;
+                        </span>{" "}
+                        <br />{" "}
+                        <span className="lowTemp">
+                          {Math.round(
+                            this.props.showWeatherResult.resData.forecast
+                              .forecastday[1].day.mintemp_c
+                          )}
+                          &#176;
+                        </span>
                       </div>
-                      <div className="col-sm-12 col-md-12 nopadding">
-                        <p>
-                          Humidity:{" "}
-                          {
-                            this.props.showWeatherResult.resData.current
-                              .humidity
-                          }
-                        </p>
+                      <div className="day wed">
+                        {
+                          days[
+                            new Date(
+                              this.props.showWeatherResult.resData.forecast.forecastday[2].date
+                            ).getDay()
+                          ]
+                        }
+                        <br />
+                        <span>
+                          <img
+                            // className="align-left m-5 pb-5"
+                            src={
+                              this.props.showWeatherResult.resData.forecast
+                                .forecastday[2].day.condition.icon
+                            }
+                            alt="Card image"
+                          />
+                        </span>
+                        <br />{" "}
+                        <span className="highTemp">
+                          {Math.round(
+                            this.props.showWeatherResult.resData.forecast
+                              .forecastday[2].day.maxtemp_c
+                          )}
+                          &#176;
+                        </span>{" "}
+                        <br />{" "}
+                        <span className="lowTemp">
+                          {Math.round(
+                            this.props.showWeatherResult.resData.forecast
+                              .forecastday[2].day.mintemp_c
+                          )}
+                          &#176;
+                        </span>
                       </div>
-                      <div className="col-sm-12 col-md-12 nopadding">
-                        <p>
-                          Feels like:{" "}
-                          {
-                            this.props.showWeatherResult.resData.current
-                              .feelslike_c
-                          }
-                          <span> &#8451;</span>
-                        </p>
+                      <div className="day thu">
+                        {
+                          days[
+                            new Date(
+                              this.props.showWeatherResult.resData.forecast.forecastday[3].date
+                            ).getDay()
+                          ]
+                        }
+                        <br />
+                        <span>
+                          <img
+                            // className="align-left m-5 pb-5"
+                            src={
+                              this.props.showWeatherResult.resData.forecast
+                                .forecastday[3].day.condition.icon
+                            }
+                            alt="Card image"
+                          />
+                        </span>
+                        <br />{" "}
+                        <span className="highTemp">
+                          {Math.round(
+                            this.props.showWeatherResult.resData.forecast
+                              .forecastday[3].day.maxtemp_c
+                          )}
+                          &#176;
+                        </span>{" "}
+                        <br />{" "}
+                        <span className="lowTemp">
+                          {Math.round(
+                            this.props.showWeatherResult.resData.forecast
+                              .forecastday[3].day.mintemp_c
+                          )}
+                          &#176;
+                        </span>
+                      </div>
+                      <div className="day fri">
+                        {
+                          days[
+                            new Date(
+                              this.props.showWeatherResult.resData.forecast.forecastday[4].date
+                            ).getDay()
+                          ]
+                        }
+                        <br />
+                        <span>
+                          <img
+                            // className="align-left m-5 pb-5"
+                            src={
+                              this.props.showWeatherResult.resData.forecast
+                                .forecastday[4].day.condition.icon
+                            }
+                            alt="Card image"
+                          />
+                        </span>
+                        <br />{" "}
+                        <span className="highTemp">
+                          {Math.round(
+                            this.props.showWeatherResult.resData.forecast
+                              .forecastday[4].day.maxtemp_c
+                          )}
+                          &#176;
+                        </span>{" "}
+                        <br />{" "}
+                        <span className="lowTemp">
+                          {Math.round(
+                            this.props.showWeatherResult.resData.forecast
+                              .forecastday[4].day.mintemp_c
+                          )}
+                          &#176;
+                        </span>
                       </div>
                     </div>
                   </div>

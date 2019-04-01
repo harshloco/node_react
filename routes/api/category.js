@@ -23,7 +23,7 @@ router.get("/test", (req, res) =>
 router.get("/news/:section", (req, res) => {
   //console.log("city search " + req.params.city);
   // res.json({ succes: true });
-  const api_key = "pkYaRs3WogFgZTmjZCLtXaNRRpq437yg";
+  const api_key = "pkYZCLtXaNRRpq437yg";
   console.log(
     "https://api.nytimes.com/svc/topstories/v2/" +
       req.params.section +
@@ -50,9 +50,10 @@ router.get("/weather/:city", (req, res) => {
   console.log("city search " + req.params.city);
   // res.json({ succes: true });
 
-  Request.get(
-    "http://api.apixu.com/v1/current.json?key=005e71435434499ebf081653192403&q=" +
-      req.params.city,
+  http: Request.get(
+    "http://api.apixu.com/v1/forecast.json?key=005e714bf081653192403&q=" +
+      req.params.city +
+      "&days=6",
     (error, response, body) => {
       if (error) {
         return console.dir(error);

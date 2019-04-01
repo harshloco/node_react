@@ -73,36 +73,26 @@ class Landing extends Component {
           <div className="landing landingStyle">
             <div className="landing-inner text-white">
               <div className="container">
-                <div className="row">
-                  {/* <div className="col-md-12 text-center">
-                    <h1 className="display-3 mb-4">Developer Connector</h1>
-                    <p className="lead">
-                      {" "}
-                      Create a developer profile/portfolio, share posts and get help
-                      from other developers
-                    </p>
-                    <hr />
-                    <h1>This is landing</h1>
-                  </div> */}
-
-                  <div className="col-sm-12">
-                    <div className="card  w-75 ">
-                      <div className="card-body">
-                        <h5 className="card-title text-dark">
-                          Click one of the buttons below!
-                        </h5>
-                        {/* <p className="card-text">
+                <div className="row d-flex justify-content-center">
+                  {/* <div className="col-sm-12"> */}
+                  <div className="card">
+                    <div className="card-body ">
+                      <h5 className="card-title text-dark text-center">
+                        Click one of the buttons below!
+                      </h5>
+                      {/* <p className="card-text">
                           With supporting text below as a natural lead-in to
                           additional content.
                         </p> */}
-                        <div className="bg-info clearfix" />
+                      <div className="bg-info clearfix" />
+                      <div className="d-flex justify-content-center">
                         <div
-                          className="btn-toolbar"
+                          className="btn-toolbar mx-auto"
                           role="toolbar"
                           aria-label="Toolbar with button groups"
                         >
                           <div
-                            className="btn-group mr-2"
+                            className="btn-group m-2"
                             role="group"
                             aria-label="First group"
                           >
@@ -116,7 +106,7 @@ class Landing extends Component {
                             </button>
                           </div>
                           <div
-                            className="btn-group mr-2"
+                            className="btn-group m-2"
                             role="group"
                             aria-label="First group"
                           >
@@ -134,23 +124,6 @@ class Landing extends Component {
                     </div>
                   </div>
                 </div>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp;
               </div>
             </div>
           </div>

@@ -61,7 +61,7 @@ class NewsCard extends Component {
           key={this.props.showNewsResult.resData.status}
         >
           <div className="newsCardResult-inner ">
-            <div className="container">
+            <div className="container  d-flex justify-content-center mx-5">
               <div className="row">
                 <div className="container-fluid">
                   {/* <h1 className="text-center mb-3">

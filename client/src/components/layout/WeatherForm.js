@@ -46,73 +46,74 @@ export default class WeatherForm extends Component {
     });
   }
   render() {
-    if (this.state.showSpinner === true) {
-      return (
-        <div className="landing landingStyle ">
-          <div className="landing-inner text-white">
-            <div className="container ">
-              <div className="h-100 row align-items-center">
-                <div className="col text-center">
-                  <Spinner />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    let getWeatherButton;
+    if (this.state.city.length > 0) {
+      getWeatherButton = (
+        // <div className="col-3 ">
+
+        <button
+          type="submit"
+          className="btn btn-outline-info buttonBorder text-dark mx-5 responsive-width whiteBackground"
+        >
+          Get Weather
+        </button>
+        // </div>
       );
-    } else {
-      let getWeatherButton;
-      if (this.state.city.length > 0) {
-        getWeatherButton = (
-          <div className="col-3 ">
-            <button
-              type="submit"
-              className="btn btn-default mx-5  responsive-width"
-            >
-              Get Weather
-            </button>
-          </div>
-        );
-      }
-      return (
-        <div className="landing landingStyle">
-          <div className="landing-inner text-white">
-            <div className="container">
-              <div className="row">
-                <form className="form-inline" onSubmit={this.onSubmit}>
-                  <div className="col-6 ">
-                    <input
-                      type="text"
-                      className="form-control mx-5 border-0  border-bottom border-dark "
-                      id="city"
-                      placeholder="City"
-                      name="city"
-                      value={this.state.city}
-                      onChange={this.onChange}
-                    />
+    }
+    return (
+      <div className="landing landingStyle">
+        <div className="landing-inner text-white">
+          <div className="container">
+            <div className="row d-flex justify-content-center">
+              {this.state.showSpinner === true ? (
+                <div className="landing landingStyle ">
+                  <div className="landing-inner text-white">
+                    <div className="container ">
+                      <div className="d-flex justify-content-center row align-items-center">
+                        <div className="col text-center">
+                          <Spinner />
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                </div>
+              ) : (
+                <form className="form-inline" onSubmit={this.onSubmit}>
+                  {/* <div className="col-6 "> */}
+                  <input
+                    type="text"
+                    className="form-control mx-5 border-0  border-bottom border-dark "
+                    id="city"
+                    placeholder="City"
+                    name="city"
+                    value={this.state.city}
+                    onChange={this.onChange}
+                  />
+                  {/* </div> */}
 
                   {getWeatherButton}
-                  <div className="col-3 ">
-                    <button
-                      type="submit"
-                      className="btn btn-default mx-5 responsive-width"
-                      onClick={this.onClick}
-                    >
-                      Back to Home
-                    </button>
-                  </div>
+                  {/* <div className="col-3 "> */}
+
+                  <button
+                    type="submit"
+                    className="btn btn-outline-info buttonBorder text-dark mx-5 responsive-width whiteBackground"
+                    onClick={this.onClick}
+                  >
+                    Back to Home
+                  </button>
+                  {/* </div> */}
                 </form>
-              </div>
+              )}
             </div>
-            {this.state.showWeatherResult != null ? (
+            {this.state.showWeatherResult != null &&
+            this.state.showSpinner === false ? (
               <WeatherCard showWeatherResult={this.state.showWeatherResult} />
             ) : (
               ""
             )}
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }

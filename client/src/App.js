@@ -10,7 +10,7 @@ class App extends Component {
       <div className="App">
         <Landing />
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }
