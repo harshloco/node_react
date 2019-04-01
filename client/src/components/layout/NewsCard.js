@@ -15,9 +15,12 @@ class NewsCard extends Component {
   }
   componentDidMount() {}
   render() {
-    //console.log(this.props.showNewsResult.resData.status);
+    console.log(this.props.showNewsResult.resData.fault);
     var numberOfNews = [];
-    if (this.props.showNewsResult.resData != null) {
+    if (
+      this.props.showNewsResult.resData != null &&
+      this.props.showNewsResult.resData.fault.length <= 0
+    ) {
       // numberOfNews = this.state.showNewsResult.resData.results;
       // numberOfNews = this.state.showNewsResult.resData.results.splice(
       //   5,
@@ -51,7 +54,10 @@ class NewsCard extends Component {
       // console.log("number of news " + numberOfNews[3].title);
     }
     // console.log("result is **** " + this.props.showNewsResult.section);
-    if (this.props.showNewsResult.resData.status.length > 0) {
+    if (
+      this.props.showNewsResult.resData.fault.length <= 0 &&
+      this.props.showNewsResult.resData.status.length > 0
+    ) {
       // console.log("number of sections " + this.props.showNewsResult.title);
       //console.log("showing news" + this.props.showNewsResult.title);
       return (
@@ -175,10 +181,12 @@ class NewsCard extends Component {
         <div className="newsCardResult">
           <div className="newsCardResult-inner ">
             <div className="container">
-              <div className="row">
+              <div className="row d-flex justify-content-center">
                 <div className=" mx-5 text-dark">
                   <div className="alert alert-success alert-dismissible">
-                    <strong>{this.props.showWeatherResult.error}</strong>
+                    <strong>
+                      {this.props.showNewsResult.resData.fault.faultstring}
+                    </strong>
                   </div>
                 </div>
               </div>

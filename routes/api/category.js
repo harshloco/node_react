@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 var Request = require("request");
-const axios = require("axios");
+const keys = require("../config/keys");
 
 router.get("/test", (req, res) =>
   // res.json({ msg: "/api/category/test is working" })
@@ -23,7 +23,7 @@ router.get("/test", (req, res) =>
 router.get("/news/:section", (req, res) => {
   //console.log("city search " + req.params.city);
   // res.json({ succes: true });
-  const api_key = "pkYZCLtXaNRRpq437yg";
+  const api_key = keys.newsApiKey;
   console.log(
     "https://api.nytimes.com/svc/topstories/v2/" +
       req.params.section +
@@ -37,7 +37,8 @@ router.get("/news/:section", (req, res) => {
       api_key,
     (error, response, body) => {
       if (error) {
-        return console.dir(error);
+        console.dir(error);
+        res.json({ resData: JSON.parse(error) });
       }
       console.dir(JSON.parse(body));
       res.json({ resData: JSON.parse(body) });
@@ -50,8 +51,11 @@ router.get("/weather/:city", (req, res) => {
   console.log("city search " + req.params.city);
   // res.json({ succes: true });
 
-  http: Request.get(
-    "http://api.apixu.com/v1/forecast.json?key=005e714bf081653192403&q=" +
+  const api_key = keys.weatherApiKey;
+  Request.get(
+    "http://api.apixu.com/v1/forecast.json?key=" +
+      api_key +
+      "&q=" +
       req.params.city +
       "&days=6",
     (error, response, body) => {
