@@ -17,10 +17,7 @@ class NewsCard extends Component {
   render() {
     console.log(this.props.showNewsResult.resData.fault);
     var numberOfNews = [];
-    if (
-      this.props.showNewsResult.resData != null &&
-      this.props.showNewsResult.resData.fault.length <= 0
-    ) {
+    if (this.props.showNewsResult.resData != null) {
       // numberOfNews = this.state.showNewsResult.resData.results;
       // numberOfNews = this.state.showNewsResult.resData.results.splice(
       //   5,
@@ -54,10 +51,7 @@ class NewsCard extends Component {
       // console.log("number of news " + numberOfNews[3].title);
     }
     // console.log("result is **** " + this.props.showNewsResult.section);
-    if (
-      this.props.showNewsResult.resData.fault.length <= 0 &&
-      this.props.showNewsResult.resData.status.length > 0
-    ) {
+    if (this.props.showNewsResult.resData.status.length > 0) {
       // console.log("number of sections " + this.props.showNewsResult.title);
       //console.log("showing news" + this.props.showNewsResult.title);
       return (

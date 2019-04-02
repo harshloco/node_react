@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NewsCard from "./NewsCard";
 import axios from "axios";
-import Spinner from "./Spinner";
+import Spinner from "../Spinner";
 
 class NewsForm extends Component {
   constructor() {

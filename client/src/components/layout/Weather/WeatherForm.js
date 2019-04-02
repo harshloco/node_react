@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import WeatherCard from "./WeatherCard";
 import axios from "axios";
-import Spinner from "./Spinner";
+import Spinner from "../Spinner";
 
 export default class WeatherForm extends Component {
   constructor() {

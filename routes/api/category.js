@@ -67,5 +67,22 @@ router.get("/weather/:city", (req, res) => {
     }
   );
 });
+
+// Post jobs
+router.get("/jobs/:jobDescription/:location", (req, res) => {
+  Request.get(
+    "https://jobs.github.com/positions.json?description=" +
+      req.params.jobDescription +
+      "&location=" +
+      req.params.location,
+    (error, response, body) => {
+      if (error) {
+        res.json({ resData: "No Data Found!" });
+      }
+      console.dir(JSON.parse(body));
+      res.json({ resData: JSON.parse(body) });
+    }
+  );
+});
 //export router so it is picked up by server.js
 module.exports = router;

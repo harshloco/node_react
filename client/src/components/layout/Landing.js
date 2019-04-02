@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import NewsForm from "./NewsForm";
-import WeatherForm from "./WeatherForm";
+import NewsForm from "./News/NewsForm";
+import WeatherForm from "./Weather/WeatherForm";
+import JobsForm from "./Jobs/JobsForm";
 
 class Landing extends Component {
   // componentDidMount() {
@@ -17,7 +18,8 @@ class Landing extends Component {
       loading: false,
       serverResponse: null,
       showWeatherForm: false,
-      showNewsForm: false
+      showNewsForm: false,
+      showJobsForm: false
     };
     this.onClick = this.onClick.bind(this);
   }
@@ -50,6 +52,18 @@ class Landing extends Component {
         serverResponse: null,
         showWeatherForm: false,
         showNewsForm: true
+      });
+    } else if (e.target.name === "jobs") {
+      console.log("jobs button clicked");
+      this.setState({ loading: true });
+      this.setState({
+        questions: false,
+        answers: true,
+        loading: false,
+        serverResponse: null,
+        showWeatherForm: false,
+        showNewsForm: false,
+        showJobsForm: true
       });
     }
   }
@@ -119,6 +133,20 @@ class Landing extends Component {
                               News
                             </button>
                           </div>
+                          <div
+                            className="btn-group m-2"
+                            role="group"
+                            aria-label="First group"
+                          >
+                            <button
+                              onClick={this.onClick}
+                              type="button"
+                              name="jobs"
+                              className="btn btn-outline-info buttonBorder text-dark"
+                            >
+                              Jobs
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -135,6 +163,9 @@ class Landing extends Component {
         } else if (this.state.showNewsForm) {
           //show news form for where user can select topic
           return <NewsForm />;
+        } else if (this.state.showJobsForm) {
+          //show news form for where user can select topic
+          return <JobsForm />;
         }
       }
     }
