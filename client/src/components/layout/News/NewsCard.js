@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import classnames from "classnames";
 
-import $ from "jquery";
 class NewsCard extends Component {
   constructor() {
     super();
@@ -15,45 +13,23 @@ class NewsCard extends Component {
   }
   componentDidMount() {}
   render() {
-    console.log(this.props.showNewsResult.resData.fault);
     var numberOfNews = [];
     if (this.props.showNewsResult.resData != null) {
-      // numberOfNews = this.state.showNewsResult.resData.results;
-      // numberOfNews = this.state.showNewsResult.resData.results.splice(
-      //   5,
-      //   this.state.showNewsResult.resData.num_results
-      // );
       var k = 0;
-      var activeClass = "";
+
       var carouselCardClass = [];
       for (k; k < this.props.showNewsResult.resData.results.length; k++) {
-        // console.log(
-        //   "title " + this.props.showNewsResult.resData.results[k].title
-        // );
-
         if (k === 3) {
-          activeClass = "active";
           carouselCardClass.push("carousel-item col-md-4 active");
         } else {
           carouselCardClass.push("carousel-item col-md-4 ");
         }
-        // console.log(
-        //   "this.props.showNewsResult.resData.results[" +
-        //     k +
-        //     "].length " +
-        //     this.props.showNewsResult.resData.results[k].multimedia.length
-        // );
+
         numberOfNews.push(this.props.showNewsResult.resData.results[k]);
-        // console.log("numberOfNews[_index] " + numberOfNews.length);
       }
-      // console.log(numberOfNews.length);
-      // console.info("array obejct " + numberOfNews);
-      // console.log("number of news " + numberOfNews[3].title);
     }
     // console.log("result is **** " + this.props.showNewsResult.section);
     if (this.props.showNewsResult.resData.status.length > 0) {
-      // console.log("number of sections " + this.props.showNewsResult.title);
-      //console.log("showing news" + this.props.showNewsResult.title);
       return (
         <div
           className="newCardResult "
@@ -124,7 +100,6 @@ class NewsCard extends Component {
                                       ? numberOfNews[_index].multimedia[4].url
                                       : ""
                                   }
-                                  alt="Card image cap"
                                 />
                                 <div className="card-body">
                                   <h4 className="card-title text-dark">
@@ -146,7 +121,7 @@ class NewsCard extends Component {
                                   </p>
                                   <a
                                     href={numberOfNews[_index].url}
-                                    target="_blank"
+                                    target="blank"
                                   >
                                     Read full story
                                   </a>
@@ -187,10 +162,6 @@ class NewsCard extends Component {
             </div>
           </div>
         </div>
-
-        //   <SweetAlert title="Here's a message!" onConfirm={this.onConfirm}>
-        //     {this.props.showWeatherResult.resData.error.message}
-        //   </SweetAlert>
       );
     }
   }

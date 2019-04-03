@@ -56,9 +56,7 @@ class NewsForm extends Component {
     var className = "dropdown-item";
     var topicNames = this.state.topicList.split(",");
     var i = 0;
-    // console.log(
-    //   "this.state.topicList.length " + this.state.topicList.split(",").length
-    // );
+
     if (topicNames.length > 0) {
       for (i; i < topicNames.length; i++) {
         htmlButtons.push(
@@ -78,20 +76,10 @@ class NewsForm extends Component {
 
     var numberOfNews = [];
     if (this.state.showNewsResult != null) {
-      // numberOfNews = this.state.showNewsResult.resData.results;
-      // numberOfNews = this.state.showNewsResult.resData.results.splice(
-      //   5,
-      //   this.state.showNewsResult.resData.num_results
-      // );
       var k = 0;
       for (k; k < this.state.showNewsResult.resData.num_results; k++) {
-        // console.log(
-        //   "title " + this.state.showNewsResult.resData.results[k].title
-        // );
         numberOfNews.push(this.state.showNewsResult.resData.results[k]);
       }
-      // console.log(numberOfNews.length);
-      // console.info("array obejct " + numberOfNews);
     }
     if (this.state.showSpinner === true) {
       return (
@@ -114,16 +102,6 @@ class NewsForm extends Component {
             <div className="container">
               <div className="row d-flex justify-content-center">
                 <form className="form-inline" onSubmit={this.onSubmit}>
-                  {/* <div className="col-6 "> */}
-                  {/* <input
-                      type="text"
-                      className="form-control mx-5 border-0  border-bottom border-dark transparentBackground"
-                      id="city"
-                      placeholder="City"
-                      name="city"
-                      value={this.state.city}
-                      onChange={this.onChange}
-                    /> */}
                   <div className="mx-5 dropdown">
                     <button
                       className="btn btn-secondary dropdown-toggle"
@@ -158,14 +136,6 @@ class NewsForm extends Component {
               </div>
             </div>
 
-            {/* {this.state.showNewsResult != null
-              ? numberOfNews.map((
-                  _item,
-                  _index // Note: single line expression, so impilicit;y return our ItemComponent
-                ) => <NewsCard showNewsResult={numberOfNews[_index]} />)
-              : // <NewsCard showNewsResult={this.state.showNewsResult}
-                //  />
-                ""} */}
             {this.state.showNewsResult != null ? (
               <NewsCard showNewsResult={this.state.showNewsResult} />
             ) : (

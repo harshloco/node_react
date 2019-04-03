@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import WeatherCard from "../Weather/WeatherCard";
+import JobsCard from "../Jobs/JobsCard";
 import axios from "axios";
 import Spinner from "../Spinner";
 
@@ -7,8 +7,8 @@ export default class JobsForm extends Component {
   constructor() {
     super();
     this.state = {
-      jobDescription: "",
-      location: "",
+      jobDescription: "Software Developer",
+      location: "Sydney",
       showJobsResult: null,
       showSpinner: false
     };
@@ -29,29 +29,27 @@ export default class JobsForm extends Component {
     this.setState({
       showSpinner: true
     });
-    console.log("get jobs result now");
-    axios
-      .get(
-        "/api/category/jobs" +
-          "/" +
-          this.state.jobDescription +
-          "/" +
-          this.state.location
-      )
-      .then(result => {
-        if (result) {
-          console.log(result.data);
+    if (this.state.jobDescription.length > 0) {
+      axios
+        .get(
+          "/api/category/jobs" +
+            "/" +
+            this.state.jobDescription +
+            "/" +
+            this.state.location
+        )
+        .then(result => {
+          if (result) {
+            //console.log(result.data);
 
-          this.setState({
-            showJobsResult: result.data,
-            showSpinner: false
-            //showWeatherForm: true
-          });
-          console.log(
-            "this.state.showWeatherResult.length-" + this.state.showJobsResult
-          );
-        }
-      });
+            this.setState({
+              showJobsResult: result.data,
+              showSpinner: false
+              //showWeatherForm: true
+            });
+          }
+        });
+    }
   }
   render() {
     let getJobsButton;
@@ -128,7 +126,7 @@ export default class JobsForm extends Component {
             </div>
             {this.state.showJobsResult != null &&
             this.state.showSpinner === false ? (
-              <WeatherCard showJobsResult={this.state.showJobsResult} />
+              <JobsCard showJobsResult={this.state.showJobsResult} />
             ) : (
               ""
             )}

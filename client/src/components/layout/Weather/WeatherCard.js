@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SweetAlert from "react-bootstrap-sweetalert";
+
 import $ from "jquery";
 class WeatherCard extends Component {
   constructor() {
@@ -10,7 +10,7 @@ class WeatherCard extends Component {
   onConfirm(e) {
     //set the values entered in the form to the state
     //this.setState(hide);
-    console.log("close ");
+    // console.log("close ");
   }
   componentDidMount() {
     $(".alert")
@@ -21,7 +21,7 @@ class WeatherCard extends Component {
     //alert("what is this");
   }
   render() {
-    console.log("showing weathercard");
+    // console.log("showing weathercard");
     if (this.props.showWeatherResult.resData === null) {
       return (
         <div className="weatherCardResult">
@@ -51,10 +51,6 @@ class WeatherCard extends Component {
               </div>
             </div>
           </div>
-
-          //   <SweetAlert title="Here's a message!" onConfirm={this.onConfirm}>
-          //     {this.props.showWeatherResult.resData.error.message}
-          //   </SweetAlert>
         );
       } else {
         var days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -81,7 +77,6 @@ class WeatherCard extends Component {
                           this.props.showWeatherResult.resData.current.condition
                             .icon
                         }
-                        alt="Card image"
                       />
                     </div>
                     <span className="temp">
@@ -126,7 +121,6 @@ class WeatherCard extends Component {
                               this.props.showWeatherResult.resData.forecast
                                 .forecastday[1].day.condition.icon
                             }
-                            alt="Card image"
                           />
                         </span>
                         <br />{" "}
@@ -162,7 +156,6 @@ class WeatherCard extends Component {
                               this.props.showWeatherResult.resData.forecast
                                 .forecastday[2].day.condition.icon
                             }
-                            alt="Card image"
                           />
                         </span>
                         <br />{" "}
@@ -198,7 +191,6 @@ class WeatherCard extends Component {
                               this.props.showWeatherResult.resData.forecast
                                 .forecastday[3].day.condition.icon
                             }
-                            alt="Card image"
                           />
                         </span>
                         <br />{" "}
@@ -234,7 +226,6 @@ class WeatherCard extends Component {
                               this.props.showWeatherResult.resData.forecast
                                 .forecastday[4].day.condition.icon
                             }
-                            alt="Card image"
                           />
                         </span>
                         <br />{" "}

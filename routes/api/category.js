@@ -77,7 +77,7 @@ router.get("/jobs/:jobDescription/:location", (req, res) => {
       req.params.location,
     (error, response, body) => {
       if (error) {
-        res.json({ resData: "No Data Found!" });
+        res.json({ resData: "No Result Found" });
       }
       console.dir(JSON.parse(body));
       res.json({ resData: JSON.parse(body) });

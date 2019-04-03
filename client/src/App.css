@@ -278,3 +278,7 @@ input:focus {
 .container {
   margin: 2px;
 }
+
+.jobsCard:hover * {
+  background: lightgray;
+}

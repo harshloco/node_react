@@ -25,7 +25,7 @@ class Landing extends Component {
   }
   onClick(e) {
     e.preventDefault(); // prevents the submit form
-    let buttonName = e.target.name;
+
     console.log("button clicked " + e.target.name);
     // const weatherCheck = {
     //   city: "sydney",

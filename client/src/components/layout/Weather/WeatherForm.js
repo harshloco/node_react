@@ -29,19 +29,16 @@ export default class WeatherForm extends Component {
     this.setState({
       showSpinner: true
     });
-    console.log("get weather result now");
+    // console.log("get weather result now");
     axios.get("/api/category/weather" + "/" + this.state.city).then(result => {
       if (result) {
-        console.log(result.data);
+        // console.log(result.data);
 
         this.setState({
           showWeatherResult: result.data,
           showSpinner: false
           //showWeatherForm: true
         });
-        console.log(
-          "this.state.showWeatherResult.length-" + this.state.showWeatherResult
-        );
       }
     });
   }
